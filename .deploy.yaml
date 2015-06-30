@@ -1,0 +1,12 @@
+name: springboard-gem
+user: ubuntu
+buildscript: sideloader/deploy.sh
+postinstall: sideloader/postinstall.sh
+virtualenv_prefix: springboardgem
+pip:
+ - gunicorn
+dependencies:
+ - python-yaml
+ - cmake
+ - libssl-dev
+ - libffi-dev
