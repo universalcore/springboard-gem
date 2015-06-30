@@ -15,23 +15,22 @@
 </head>
 <body>
     <div id="header">
-        <div class="lang">
-            <div>
-                <li>
-                    <a>{{language|display_language_name}}</a>
-                </li>
-                {% for lang_code in display_languages %}
-                <li>
-                    <a href="{{'locale_matched'|route_url(language=lang_code)}}">{{lang_code|display_language_name}}</a>
-                </li>
-                {% endfor %}
-                    <li><a href="{{'locale_change'|route_url}}">&gt;&gt;</a></li>
-                </ul>
-          </div>
-        </div>
-        <div class="logo"><a href="{{'home'|route_url}}" class="logo"><img alt='Skeleton' src="{{ 'springboard:static/img/logo000000.png'|static_url }}" /></a></div>
-        <div class="clr"></div>
-        {% include 'auth.jinja2' %}
+      <div class="lang">
+        <ul>
+          <li>
+              <a>{{language|display_language_name}}</a>
+          </li>
+          {% for lang_code in display_languages %}
+          <li>
+              <a href="{{'locale_matched'|route_url(language=lang_code)}}">{{lang_code|display_language_name}}</a>
+          </li>
+          {% endfor %}
+              <li><a href="{{'locale_change'|route_url}}">&gt;&gt;</a></li>
+        </ul>
+      </div>
+      <div class="logo"><a href="{{'home'|route_url}}" class="logo"><img alt='GEM' src="{{ 'springboard:static/img/logo_x2.png'|static_url }}" /></a></div>
+      <div class="clr"></div>
+
     </div>
     <div class="push"></div><!--/PUSH-->
     <div id="submenu">
@@ -47,10 +46,6 @@
         {% block content %}
         {% endblock %}
     </div>
-
-    {% block search %}
-        {{molecules.search_box(view)}}
-    {% endblock %}
 
 </body>
 </html>
