@@ -8,7 +8,7 @@
             {{category.title}}
         </div>
 
-        {% for page in all_pages.filter(primary_category=category.uuid)[:20] %}
+        {% for page in all_pages.filter(primary_category=category.uuid).order_by('position') %}
             {% set has_image = page.image and page.image_host %}
             <div class="listing {% if not has_image %}no-pic{% endif %}">
                 {% if has_image %}

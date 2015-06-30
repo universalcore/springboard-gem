@@ -5,7 +5,7 @@
     <div>
         <div>
             <div id="banner">
-                <a href="/declaration/">
+                <a href="{{'flat_page'|route_url(slug='declaration')}}">
                     {% if localisation and localisation.image_host and localisation.image %}
                         <img alt="Welcome to the Girl Effect" src="{{localisation.image_host}}{{localisation|thumbor(320)}}"/>
                     {% else %}
@@ -15,7 +15,18 @@
             </div>
         </div>
 
-        {% set featured_pages = all_pages.filter(language=language, featured=True) %}
+
+        <div class="what">
+            <div class="h1"><a href="{{'flat_page'|route_url(slug='about')}}">{{gettext("What Is The Girl Effect")}}</a></div>
+            <div class="listing">
+                <a href="{{'flat_page'|route_url(slug='about')}}"><img alt='What is the Girl Effect' src="/static/img/what_is_girl_effect.png" /></a>
+                <div class="h2"><a href="{{'flat_page'|route_url(slug='about')}}">{{gettext("Learn more about The Girl Effect")}}</a></div>
+                <p>{{gettext("And spread the word")}}</p>
+                <div class="clr"></div>
+            </div>
+        </div><!--/what-->
+
+        {% set featured_pages = all_pages.filter(language=language, featured=True).order_by('created_at')[:4] %}
         {% if featured_pages %}
         <div class="articles latest">
             <div class="h1">{{gettext('Latest')}}</div>
@@ -30,7 +41,7 @@
         {% endif %}
 
         {% for category in all_categories.filter(language=language) %}
-            {% set category_pages = all_pages.filter(primary_category=category.uuid) %}
+            {% set category_pages = all_pages.filter(primary_category=category.uuid, featured_in_category=True).order_by('position')[:5] %}
             {% if category_pages %}
             <div class="articles">
                 <div class="h1">
@@ -50,6 +61,20 @@
             </div>
             {% endif %}
         {% endfor %}
+
+        <div class="declaration">
+            <div class="h1"><a href="{{'flat_page'|route_url(slug='declaration')}}">{{gettext('The Girl Declaration')}}</a></div>
+            <div class="listing">
+                <a href="{{'flat_page'|route_url(slug='declaration')}}"><img alt='Girl Declaration' src="/static/img/girl_declaration.png" /></a>
+                <div class="h2"><a href="{{'flat_page'|route_url(slug='declaration')}}">{{gettext('Read It Now.')}}</a></div>
+                <p>{{gettext('And share it with other girls')}}</p>
+                <div class="clr"></div>
+            </div>
+            <div class="pagination">
+            <a href="{{'flat_page'|route_url(slug='contact')}}" class="contact">{{gettext('Contact')}}</a> |
+            <a href="{{'flat_page'|route_url(slug='terms')}}" class="terms">{{gettext('Terms & Conditions')}}</a> |
+            <a href="{{'flat_page'|route_url(slug='tips')}}" class="terms">{{gettext('Tips on Use')}}</a></div>
+        </div><!--/declaration-->
     </div>
 </div>
 {% endblock %}
