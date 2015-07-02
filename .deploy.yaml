@@ -2,7 +2,7 @@ name: springboard-gem
 user: ubuntu
 buildscript: sideloader/deploy.sh
 postinstall: sideloader/postinstall.sh
-virtualenv_prefix: springboardgem
+virtualenv_prefix: springboard
 pip:
  - gunicorn
 dependencies:
