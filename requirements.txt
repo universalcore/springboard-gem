@@ -1,1 +1,1 @@
-springboard
+springboard>=3.0.1
